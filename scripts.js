@@ -11,10 +11,20 @@
 // 3. The calc will need to be cleared as an initial state
 // call clear() inside the Calculator class.
 
+//  4. Create a calculator using the constructore (i.e. const calculator = new Calculator etc)
+
+// 5. Add an event listener to number buttons by looping over each button
+// If a button is clicked, we want to append the button text to the number on the display
+//  We also need to call the updateDisplay() function in order to update the display
+
+//  6. Write the updateDisplay and appendNumber functions
+//  updateDisplay must change the currentOutputTextElement.innerText to this.currentOutput
+//  appendNumber must set this.currentOutput = to the currentOuput (as a string) + number (as a string)
+
 class Calculator {
-  constructor(previousOuput, currentOuput) {
-    this.previousOuput = previousOuput;
-    this.currentOuput = currentOuput;
+  constructor(previousOuputTextElement, currentOuputTextElement) {
+    this.previousOuputTextElement = previousOuputTextElement;
+    this.currentOuputTextElement = currentOuputTextElement;
     this.clear();
   }
 
@@ -26,19 +36,33 @@ class Calculator {
 
   delete() {}
 
-  appendNumber(number) {}
+  appendNumber(number) {
+    this.currentOuput = this.currentOuput.toString() + number.toString();
+  }
 
   chooseOperation(operation) {}
 
   compute() {}
 
-  updateDisplay() {}
+  updateDisplay() {
+    this.currentOuputTextElement.innerText = this.currentOuput;
+  }
 }
 
-const numberButtons = document.querySelectorAll("[data-number");
+const numberButtons = document.querySelectorAll("[data-number]");
 const operationButtons = document.querySelectorAll("[data-operation]");
 const equalButton = document.querySelector("[data-equals]");
 const deleteButton = document.querySelector("[data-delete]");
 const allClearButton = document.querySelector("[data-all-clear]");
-const previousOuput = document.querySelector("[data-previous-output]");
-const currentOuput = document.querySelector("[data-current-output]");
+const previousOuputTextElement = document.querySelector("[data-previous-output]");
+const currentOuputTextElement = document.querySelector("[data-current-output]");
+
+const calculator = new Calculator(previousOuputTextElement, currentOuputTextElement);
+
+numberButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    // console.log("button clicked");
+    calculator.appendNumber(button.innerText);
+    calculator.updateDisplay();
+  });
+});
