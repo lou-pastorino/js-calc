@@ -9,6 +9,7 @@
 body {
   margin: 0;
   padding: 0;
+  background: linear-gradient(to right, #f9655b, #ee821a);
 }
 
 /* Setup the basic structure of the Calculator grid */
@@ -28,12 +29,12 @@ body {
   cursor: pointer;
   outline: none;
   font-size: 2rem;
-  border: 1px solid lightcoral;
+  border: 2px solid white;
   background-color: transparent;
 }
 
 .calculator-grid > button:hover {
-  background-color: lightgray;
+  background-color: #557c93;
 }
 
 .span-two {
@@ -48,7 +49,7 @@ body {
   align-items: flex-end;
   justify-content: space-evenly;
   flex-direction: column;
-  background-color: lightcyan;
+  background-color: white;
   color: black;
   padding-right: 1rem;
   word-wrap: break-word;
@@ -56,11 +57,11 @@ body {
 }
 
 .previous-output {
-  font-size: 1rem;
-  color: lightcoral;
+  font-size: 1.5rem;
+  color: #ee821a;
 }
 
 .current-output {
-  font-size: 2rem;
-  color: coral;
+  font-size: 2.5rem;
+  color: #f9655b;
 }
